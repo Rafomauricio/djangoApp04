@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Entradas</title>
+    <!-- Agrega los enlaces a los archivos CSS de Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <!-- Agrega una clase "container" para un diseño más limpio -->
+    <div class="container">
+        <h1 class="mt-4">Lista de Entradas</h1>
+        <ul class="list-group mt-4">
+            {% for entrada in entradas %}
+                <li class="list-group-item">
+                    <div class="card"> <!-- Agrega una clase "card" para aplicar el mismo estilo -->
+                        <div class="card-body">
+                            <h2 class="card-title">{{ entrada.titulo }}</h2>
+                            <p class="card-text">{{ entrada.contenido }}</p>
+                            <p class="card-text">Autor: <a href="{% url 'entradas_por_autor' autor_id=entrada.autor.id %}" class="btn btn-primary btn-sm">Ver más</a></p>
+                            <p class="card-text">Fecha de Publicación: {{ entrada.fecha_publicacion }}</p>
+                        </div>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <!-- Agrega los archivos JavaScript de Bootstrap (jQuery y Popper.js) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

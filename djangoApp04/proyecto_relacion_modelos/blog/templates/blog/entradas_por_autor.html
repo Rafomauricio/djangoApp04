@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Entradas por Autor: {{ autor.nombre }}</title>
+    <!-- Agrega los enlaces a los archivos CSS de Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Personaliza el estilo de la página aquí */
+        body {
+            background-color: #f8f9fa; /* Color de fondo */
+        }
+        .container {
+            background-color: #ffffff; /* Color del contenedor */
+            padding: 20px;
+            border-radius: 10px; /* Bordes redondeados */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra */
+        }
+        .list-group-item {
+            background-color: #e9ecef; /* Color de fondo de los elementos de la lista */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-4">Entradas por Autor: {{ autor.nombre }}</h1>
+        <ul class="list-group mt-4">
+            {% for entrada in entradas %}
+                <li class="list-group-item">
+                    <h2>{{ entrada.titulo }}</h2>
+                    <p>{{ entrada.contenido }}</p>
+                    <p>Autor: {{ entrada.autor }}</p>
+                    <p>Fecha de Publicación: {{ entrada.fecha_publicacion }}</p>
+                </li>
+            {% empty %}
+                <p class="text-muted">No hay entradas para este autor.</p>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <!-- Agrega los archivos JavaScript de Bootstrap (jQuery y Popper.js) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
